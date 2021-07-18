@@ -1,0 +1,132 @@
+<!-- <!DOCTYPE html> -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Final_JS.js app</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+		<link rel="stylesheet" href="./CSS/style.css" type="text/css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">CS105.L21.KHCL</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+		  
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Grid
+				  </a>
+				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#" onclick="SetGrid('On');">On</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#" onclick="SetGrid('Off');">Off</a>
+				  </div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Light
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#" onclick="SetLight(1);">Spotlight</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="SetLight(2);">Directional light</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="SetLight(3);">No light</a>
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Transform
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#" onclick="ChangeTransform(1);">Move</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeTransform(2);">Rotate</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeTransform(3);">Scale</a>	
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Geometry
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(1);">Box</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(2);">Sphere</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(3);">Cone</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(4);">Cylinder</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(5);">Octahedron</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(6);">Ring</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(7);">Torus</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(8);">Teapot</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="ChangeGeo(9);">Tube</a>
+					  
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Surface
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#" onclick="SetTexture(1);">Point</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="SetTexture(2);">Line</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="SetTexture(3);">Solid</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="SetTexture(4);">Texture</a>
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Animation
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#" onclick="Animate(1);">Spin</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="Animate(2);">Bounce</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="Animate(3);">Jump</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="Animate(4);">Random move</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="Animate(5);">Dance</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#" onclick="Animate(6);">Stop</a>
+					</div>
+				  </li>
+			  </ul>
+			</div>
+		  </nav>
+		<input id="file-input" type="file" name="file-input" style="display: none;" accept="image/*">
+
+		<div id="webgl"></div>
+		<script src="./JS/dat.gui.min.js"></script>
+		<script src="https://threejs.org/build/three.js"></script>
+		<!-- <script src="./JS/OBJLoader.js"></script> -->
+		<script src="./JS/OrbitControls.js"></script>
+		<script src= "./JS/TeapotGeometry.js"></script>
+		<script src="./JS/TransformControls.js"></script>
+		<script src="./JS/anime.min.js"></script>
+		<script src="./JS/main.js"></script>
+
+	</body>
+</html>
