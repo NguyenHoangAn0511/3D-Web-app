@@ -1,3 +1,6 @@
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+
 var PlaceHolder, Control, scene, camera, GridHelp, sp_light, drt_light, Spin, Bounce, RandomMove, Jump;
 
 function init() {
@@ -68,7 +71,8 @@ function init() {
 	PlaceHolder.material.opacity = 0;
 
 	var Shape = ChangeTexture(CreateGeo('Box'), ChangeMaterial('Solid'), 'Phong');
-	PlaceHolder.position.y += 10;
+	// PlaceHolder.position.y = 30;
+	// Shape.position.y = 30;
 	Shape.name = "object";
 	Shape.castShadow = true;
 	PlaceHolder.add(Shape);
@@ -190,8 +194,8 @@ function init() {
 	Jump = anime.timeline({
 		targets: PlaceHolder.position,
 		keyframes: [
-			{x: 10, y: 10, z: 10, duration: 0},
-			{y: 30, duration: 1500}],
+			{x: 10, y: 30, z: 10, duration: 0},
+			{y: 120, duration: 2500}],
 		easing: 'easeInBounce',
 		loop: true,
 		autoplay: false,
@@ -237,6 +241,22 @@ function init() {
 	
     update(renderer,scene,camera,controls);
 }
+
+
+// function load_model(){
+// 	// var Object = PlaceHolder.getObjectByName('object');
+// 	const loader = new THREE.GLTFLoader();
+
+// 	loader.load( 'scene.gltf', function ( gltf ) {
+
+// 		scene.add(gltf.scene);
+
+// 	}, undefined, function ( error ) {
+
+// 		console.error( error );
+
+// 	} );
+// }
 
 
 function update(renderer,scene,camera,controls){
@@ -434,7 +454,7 @@ function CreateGeo(type)
 			Geometry = new THREE.RingGeometry(10,5,100);
 			break;
 		case 'Torus':
-			Geometry = new THREE.TorusGeometry(7,2,10,100);
+			Geometry = new THREE.TorusGeometry(20,3,10,100);
 			break;
 		case 'TeaPot':
 			Geometry = new THREE.TeapotGeometry(10,10);
@@ -442,6 +462,8 @@ function CreateGeo(type)
         case 'Tube':
             Geometry = getTube();
 			break;
+		// case 'Upload':
+		// 	Geometry = load_model();
 	}
 	return Geometry;
 }
